@@ -5,11 +5,12 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="Payment App" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -24,7 +25,31 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Payment App</title>
+    <style>
+      :root {
+        --hue: 270deg;
+        --sat: 50%;
+        --lit: 40%;
+
+        --bg-primary: #fff;
+        --bg-secondary: #fff;
+        --bg-tertiary: hsla(var(--hue), var(--lit), 97%) !important;
+
+        --text-primary: #332e38;
+        --text-secondary: #47404f;
+
+        --clr-primary: #2196F3 !important;
+        --clr-primary: hsla(var(--hue), var(--sat), var(--lit));
+        --clr-secondary: hsl(41.65deg 100% 50%);
+        --clr-tertiary: #f44336;
+
+        --bx-shadow-1: 0 1px 15px rgba(0,0,0,.04), 0 1px 6px rgba(0,0,0,.04);
+        --bx-shadow-2: 0 4px 20px 1px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.08);
+        --border-1: 1px solid #80808033;
+        --border-2: 1px solid #80808052;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

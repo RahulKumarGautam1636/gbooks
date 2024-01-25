@@ -1,0 +1,47 @@
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+
+
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
+
+$color-grey-dark: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+
+
+$color-white: #fff;
+$color-black: #000;
+
+$box-shadow-very-light: rgba(0, 0, 0, .1) 0px 1px 3px 0px, rgba(0, 0, 0, .06) 0px 1px 3px 0px;
+$box-shadow-light: rgba(50, 50, 105, .15) 0px 2px 5px 0px, rgba(0, 0, 0, .05) 0px 1px 1px 0px;
+$box-shadow-dark: rgba(60, 64, 67, .3) 0px 1px 2px 0px, rgba(60, 64, 67, .15) 0px 1px 3px 1px;
+
+
+// GRID
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;
+
+// FONTS
+$default-font-size: 1.6rem;
+
+// $bp-largest: 75em;   // 1200px
+// $bp-large: 62.5em;   // 1000px
+// $bp-medium: 50em;    // 800px;
+// $bp-small: 37.5em;    // 600px;
+
+$bp-xxl: 87.5em;    // 1400px
+$bp-xl: 75em;       // 1200px
+$bp-lg: 62em;       // 992px
+$bp-md: 48em;       // 768px;
+$bp-sm: 36em;       // 576px;
+

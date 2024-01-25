@@ -1,0 +1,94 @@
+/* ----------------------------Header starts----------------------------------------------- */
+header {
+    font-size: 1.7rem;
+    box-shadow: var(--bx-shadow-1);
+    padding: 0 2vw;
+    z-index: 111;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-secondary);
+}
+header nav {
+    padding: 0.75em 0;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.2em;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    line-height: 0;
+}
+#menu-toggler {
+    line-height: 0;
+    cursor: pointer;
+}
+#menu-toggler i {
+    font-size: 2.5em !important;
+}
+.header-search {
+    overflow: hidden;
+    border: var(--border-1);
+    border-radius: 50rem;
+    font-size: 1.3em;
+
+    & i {
+        font-size: 2em !important;
+    }
+}
+.header-search input {
+    font-size: 0.8em;
+    line-height: 0;
+    background: var(--bg-secondary);
+
+    overflow: hidden;
+    border: var(--border-1);
+    border-radius: 50rem;
+    font-size: 0.7em;
+    padding: 0.275em 0.75em 0.475em 0.85em;
+    line-height: 0;
+    background: var(--bg-secondary);
+}
+.header-search button {
+    background: var(--clr-primary);
+}
+.header-search button i {
+    color: var(--bg-primary);
+}
+.header-search button:hover {
+    background: var(--clr-secondary);
+    /* opacity: 0.5; */
+}
+
+.user-dropdown img {
+    max-width: 2.5em;
+    border-radius: 50%;
+}
+.h-pill {
+    padding: 0.4em;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+}
+.header-nav i {
+    font-size: 1.25em;
+    vertical-align: text-top;
+    color: var(--clr-primary);
+}
+.brand-logo {
+    height: 3em;
+    padding: 0 1em;
+}
+.user-dropdown .dropdown-menu {
+    line-height: normal;
+    font-size: 0.85em;
+
+    & .dropdown-item {
+        padding: 0.5em 1.1em;
+    }
+}
+
+/* ----------------------------Header ends----------------------------------------------- */

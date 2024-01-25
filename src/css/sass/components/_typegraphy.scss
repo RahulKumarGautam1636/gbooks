@@ -1,0 +1,38 @@
+.heading-primary {
+    font-size: 3.6em;
+    margin-bottom: 0.4em;
+    color: var(--text-color-4);
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+
+    @include respond(sm) {
+        font-size: 3em;
+    }    
+}
+
+.heading-secondary {
+    color: var(--text-color-4);
+    font-weight: 800;
+    // font-size: 1.9rem;
+    font-size: 5rem;
+
+    @include respond(sm) {
+        font-size: 4.5rem;
+    }    
+}
+
+.text-1 {
+    color: var(--text-color-2);
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+.heading-tertiary {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--text-color-4);
+}
+
+.sub-heading-1 {
+    color: var(--text-color-3);
+}

@@ -1,0 +1,40 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    // background: #e8e8ff;
+    background: #d7d7ff;
+    // background-image: url(../../public/assets/img/eduCap.svg);
+    
+    // background-image: url(../../public/assets/img/bg-tablet-pattern.svg);
+    // background-size: 24%;
+    // background-position: center;
+    
+    background-image: url(../../public/assets/img/eduCap2.svg);
+    background-size: 18%;
+
+    @include respond(md) {
+        background-size: 30%;
+    }    
+}
+
+html {
+    font-size: 62.5%;
+
+    @include respond(md) {
+        font-size: 50.5%;
+    }
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6161d3;
+    border-radius: 5px;
+}
+::-webkit-scrollbar {
+    height: .6em;
+    width: .67em;
+}

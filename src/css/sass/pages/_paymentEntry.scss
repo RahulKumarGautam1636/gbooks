@@ -1,0 +1,93 @@
+.payment_entry {
+
+    padding: 2em;
+
+    & p {
+        margin-bottom: 0 !important;
+    }
+    & h5 {
+        margin-bottom: 0;
+        font-size: 1em;
+        line-height: inherit;
+    }
+
+    & table.basic_table.list-table {
+
+        font-size: 1.4em;
+
+        & td, & th {
+            padding: 0.6em 1em 0.5em;
+            line-height: 1.5em;
+            white-space: normal;
+        }
+
+        .table-heading {
+            color: green;
+            text-align: center;
+            font-size: 1.2em;
+
+            @include respond(md) {
+                text-align: left;
+            } 
+        }
+
+        & > tbody > tr > td:first-child {
+            font-family: 'Josefin sans';
+            font-weight: 600;
+            color: black;
+            white-space: nowrap;
+        }
+
+        & .info td:first-child {
+            width: 20em;
+
+            @include respond(md) {
+                width: auto;
+            } 
+        }
+
+        .fees-row td {
+            background: #f8fff0;
+            border-bottom: 2px solid #808080ab;
+
+            & h5 {
+                font-weight: 600;
+            }
+        }
+
+        .paymentMode {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2em;
+            row-gap: 0.9em;
+            padding: 0.9em 0;
+            font-family: 'Nunito';
+
+            @include respond(md) {
+                flex-direction: column;
+                align-items: flex-start;
+            } 
+
+            p {
+                font-weight: 600;
+            }
+        }
+
+        & select {
+            width: fit-content;
+            padding: 0.3em 0.4em;
+            border: 1px solid rgb(187, 186, 186);
+        }
+
+        .declaration p {
+            color: #424242;
+            text-align: justify;
+            font-family: 'Nunito';
+            white-space: normal;
+            line-height: 1.7em;
+        }
+    }
+
+
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            padding: 1em;
+        }
+        p {
+            font-size: 0.8em;
+            font-weight: 400;
+        }
+        .info td {
+            padding: .1em 0;
+        }
+        .mobileNo {
+            padding: .1em 0 2.4em;
+        }
+        .fees {
+            border-top: 1px solid black;
+            white-space: nowrap;
+            padding: 0.4em 0;
+        }
+        .fees-row td:first-child {
+            padding-left: 0.5em;
+        }
+        .fees-row td:last-child {
+            padding-right: 0.5em;
+        }
+        .PaymentMode {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 6em;
+            align-items: center;
+        }
+        button {
+            padding: 0.7em 0.7em;
+            background: #00a9ff;
+            border: none;
+            border-radius: 0.3em;
+        }
+    </style>
+</head>
+<body>
+    <div style="border: 1px solid #00a9ff; padding: 0.2em 1.2em 1.2em;">
+        <table style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th colspan="2" style="font-size: 0.9em; color: green;">Application No. <span style="color: red;">23ECE070</span>. Please keep it safe for further prorcess.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="info">
+                    <td style="white-space: nowrap;"><p>Application No:</p></td>
+                    <td><h5>23ECE070</h5></td>
+                </tr>
+                <tr class="info">
+                    <td><p>Course:</p></td>
+                    <td><h5>Electronics & Communication Engineering</h5></td>
+                </tr>
+                <tr class="info">
+                    <td><p>Name</p></td>
+                    <td><h5>AYUSHMAN SHIKDER</h5></td>
+                </tr>
+                <tr class="info">
+                    <td><p>Email ID:</p></td>
+                    <td><h5>ayushmansikder2005@gmail.com</h5></td>
+                </tr>
+                <tr class="info">
+                    <td><p>Zip/Pin code:</p></td>
+                    <td><h5>700063</h5></td>
+                </tr>
+                <tr>
+                    <td class="mobileNo"><p>Mobile No:</p></td>
+                    <td class="mobileNo"><h5>7639623633</h5></td>
+                </tr>
+                <tr class="fees-row">
+                    <td class="fees" ><h5>Fees Description</h5></td>
+                    <td class="fees" style="text-align: end;"><h5>Fees Amount(INR)</h5></td>
+                </tr>
+                <tr class="fees-row">
+                    <td class="fees"><p>Tuition Fees</p></td>
+                    <td class="fees" style="text-align: end;"><h5>47,000.00</h5></td>
+                </tr>
+                <tr class="fees-row">
+                    <td class="fees"></td>
+                    <td class="fees" style="text-align: end;"><h5>Total Admission Fees (Rs.) 47,000.00</h5></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 1.4em 0 2.5em;">
+                        <div class="PaymentMode">
+                            <div><p>Payment Mode:</p></div>
+                            <div>
+                                <h5>
+                                    <select name="" id="" style="width: 20em; padding: 0.3em 0; border: 1px solid #bbbaba;">
+                                        <option value="PAYMENT GATEWAY">PAYMENT GATEWAY</option>
+                                    </select>
+                                </h5>
+                            </div>
+                            <div><p>Payment Gateway:</p></div>
+                            <div>
+                                <h5>
+                                    <select name="" id="" style="width: 17em; padding: 0.3em 0; border: 1px solid #bbbaba;">
+                                        <option value="-select-">-Select-</option>
+                                    </select>
+                                </h5>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 1em; vertical-align: top;"><input type="checkbox"></td>
+                    <td><p style="color: #424242; text-align: justify;">I declare that to the best of my knowledge and belief the information given above are the correct and complete in all respect.
+                            In the event of being found otherwise, I shall abide by the decison of the  institute to summarily reject my application. I
+                            also undertake to make the payment, which is non-refundable and agree to abide by the rules and regulations framed by the 
+                            council applicable to the student admitted. 
+                    </p></td>
+                </tr>
+                <tr>
+                    <td style="padding-top: .2em;"><button><h5>SAVE</h5></button></td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+</body>
+</html>

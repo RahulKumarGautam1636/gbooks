@@ -1,0 +1,195 @@
+.login-modal {
+
+    // &.offcanvas.offcanvas-end {
+    //     width: 100vw;
+    //     background-color: #d3d6e7 !important;
+    //     border: none;
+    // }
+
+    // & .offcanvas-body {
+
+    //     @include respond(md) {
+    //         padding: 0;
+    //     }
+    // }
+
+    // background: #6343ce;
+    // background: #d7d7ff;
+    // background: #e9e9ff;
+
+    // background: #d7d7ff;
+    // background-image: url(../../public/assets/img/bg-tablet-pattern.svg);
+    // background-size: 24%;
+    // background-position: center;
+
+    font-family: "Nunito";
+    padding-top: 4em;
+
+    @include respond(md) {
+        background-size: 48%;
+        padding: 1em 2em;
+    }
+
+    & .container {
+        display: grid;
+        place-items: center;
+
+        @include respond(md) {
+            padding: 0
+        }
+    }
+
+    &__page {
+
+        display: flex;
+        border-radius: 15px;
+        max-width: 110rem;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+        @include respond(md) {
+            flex-direction: column;
+
+            & > div {
+                width: 100%;
+            }
+        }
+
+        i {
+            background: white;
+            z-index: 2;
+        }
+
+        &__left {
+            width: 54%;
+            padding: 5rem 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+            min-height: 55rem;
+            background-image: url(../../public/assets/img/education-removebg-preview.png);
+            background-position: center;
+            background-size: 32vw auto;
+            background-repeat: no-repeat;
+            // background-color: #a3d6e7;
+            background-color: #4ebadd;
+            // background-color: #5134b1;
+            // border: 1px solid #452c99;
+
+            @include respond(md) {
+                height: 33rem;
+                min-height: auto;
+                background-size: auto 60%;
+                background-position: center 9rem;
+                padding: 3.5rem 1rem;
+            }
+        }
+
+        & h2 {
+            font-size: 4em;
+            text-align: center;
+        }
+
+        &__right {
+            padding: 3rem;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: #f5f7fb;
+
+            & .heading-secondary {
+                font-size: 3rem;
+                margin: 5rem 0 1rem 0;
+
+                @include respond(md) {
+                    margin: 2rem 0 1rem 0;
+                }
+
+                &+p {
+                    margin-bottom: 4rem;
+                    color: gray;
+                    font-family: "Josefin sans";
+                }
+            }
+
+            & p {
+                font-size: 1.55rem;
+                
+            }
+
+            & .form-wrapper {
+                width: 100%;
+                max-width: 36rem;
+            }
+
+            & form {
+                width: 100%;
+
+                & input {
+                    padding: 1.5rem 1.8rem;
+                    border: none;
+                    outline: none;
+                    margin-bottom: 2rem;
+                    border-radius: 1.3rem;
+                    width: 100%;
+                    font-size: 1.5rem;
+                    box-shadow: 8rem 7rem 35rem 0px #d599ffab;
+
+                    &:focus {
+                        outline: 1px solid #00BCD4;
+                    }
+                }
+
+                & p {
+                    text-align: right;
+                    margin: 4rem 0 2.5rem 0;
+                    color: #0089f5;
+
+                    @include respond(md) {
+                        margin-top: 0;
+                    }
+
+                    & i {
+                        font-size: 1.7em;
+                        background: none;
+                        vertical-align: bottom;
+                        margin-right: 0.1em;
+                        color: #FF9800;
+                    }
+                }
+            }
+
+            & .btn-1 {
+                width: 100%;
+                border: none;
+                border-radius: 13px;
+                padding: 1.4rem;
+                background: #f56965;
+                line-height: unset;
+            }
+
+            & .login-bottom {
+                margin-top: 4.5rem;
+                padding-top: 4rem;
+                border-top: 1px solid white;
+                position: relative;
+
+                & p {
+                    position: absolute;
+                    top: -11px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #f1eefb;
+                    padding: 0 1rem;
+                    border-radius: 7px;
+                }
+            }
+        }
+    }
+
+}
