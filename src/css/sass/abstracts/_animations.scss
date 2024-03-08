@@ -1,0 +1,16 @@
+@keyframes globalLoader {
+	0% {
+		height: 15px;
+		background: #19e3d5;
+	}
+
+	50% {
+		height: 60px;
+		background: #d33deb;
+	}
+
+	100% {
+		height: 15px;
+		background: #f00e43;
+	}
+}

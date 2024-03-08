@@ -1,6 +1,3 @@
-// import '../css/applicationForm.css';
-
-
 const PaymentEntry = () => {
 
     return (

@@ -11,6 +11,20 @@ $breakpoint argument choice:
 - tab-land
 - big-desktop
 */
+@keyframes globalLoader {
+  0% {
+    height: 15px;
+    background: #19e3d5;
+  }
+  50% {
+    height: 60px;
+    background: #d33deb;
+  }
+  100% {
+    height: 15px;
+    background: #f00e43;
+  }
+}
 .logo {
   max-height: 7rem;
 }
@@ -204,6 +218,9 @@ $breakpoint argument choice:
   border-radius: 50%;
   background: var(--icon-bg);
   border: 5px solid var(--icon-border);
+  margin-right: 0.2em;
+  font-size: 0.9em;
+  color: white;
 }
 
 .bx-file {
@@ -215,6 +232,143 @@ $breakpoint argument choice:
 .bx-file:hover {
   color: blue;
   transition: 0.2s;
+}
+
+.input-style-1 input {
+  padding: 1.5rem 1.8rem;
+  border: none;
+  outline: none;
+  margin-bottom: 2rem;
+  border-radius: 1.3rem;
+  width: 100%;
+  font-size: 1.5rem;
+  box-shadow: 8rem 7rem 35rem 0px rgba(213, 153, 255, 0.6705882353);
+}
+.input-style-1 input:focus {
+  outline: 1px solid #00BCD4;
+}
+
+.form-control {
+  padding: 0.375em 0.75em;
+  font-size: 1em;
+}
+
+.input-group-text {
+  padding: 0.375em 0.75em;
+}
+
+.form-focus {
+  position: relative;
+}
+.form-focus .focus-label {
+  color: #393939;
+  font-size: 0.9em;
+  font-weight: 400;
+  left: 0.75em;
+  margin-bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  top: -0.5em;
+  -webkit-transform: translate3d(0, 1.3em, 0) scale(1);
+  transform: translate3d(0, 1.3em, 0) scale(1);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  transition: 0.24s;
+  z-index: 1;
+  white-space: nowrap;
+}
+.form-focus.focused .focus-label {
+  background: #fff;
+  opacity: 1;
+  padding: 0 0.4em;
+  top: -2.1em;
+  z-index: 1;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(123, 123, 123, 0.4392156863);
+  z-index: 11111;
+}
+.preloader span {
+  display: block;
+  height: 15px;
+  width: 15px;
+  background: #19e3d5;
+  margin: 0 7px;
+  border-radius: 10px;
+  animation: 1.2s globalLoader infinite;
+}
+.preloader span:first-child {
+  animation-delay: 0.15s;
+}
+.preloader span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.preloader span:nth-child(3) {
+  animation-delay: 0.45s;
+}
+.preloader span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.preloader span:last-child {
+  animation-delay: 0.75s;
+}
+
+.search-results {
+  background: white;
+  z-index: 1;
+  width: 100%;
+  max-height: 23em;
+  overflow: auto;
+  border-bottom-left-radius: 1.5em;
+  border-bottom-right-radius: 1.5em;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+}
+
+.search-open-btn .search-results {
+  z-index: -1;
+  display: none;
+  padding-bottom: 1.5em;
+}
+.search-open-btn .search-results .input-box .loaded .search-results {
+  display: block;
+}
+
+.search-results ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.search-results li {
+  padding: 0;
+  border-top: 1px solid rgba(128, 128, 128, 0.1882352941);
+  font-size: 0.83em;
+  display: block;
+  font-weight: 500;
+}
+
+.search-results li:hover, .search-results li:hover a, .search-results li.active, .search-results li.active a {
+  background: #00bcd4;
+  color: white;
+}
+
+.search-results ul li a {
+  padding: 0.7em 1.5em 0.4em;
+  display: block;
+  font-size: 1.65em;
+  text-decoration: none;
+  line-height: 1.5em;
+}
+
+.search-results li:hover, .search-results li:hover a, .search-results li.active, .search-results li.active a {
+  background: #00bcd4;
+  color: white;
 }
 
 table {
@@ -391,7 +545,7 @@ html {
 .login-modal__page {
   display: flex;
   border-radius: 15px;
-  max-width: 110rem;
+  max-width: 120rem;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -418,7 +572,7 @@ html {
   z-index: 2;
 }
 .login-modal__page__left {
-  width: 54%;
+  width: 40%;
   padding: 5rem 4rem;
   color: white;
   position: relative;
@@ -456,11 +610,18 @@ html {
 .login-modal__page__right {
   padding: 3rem;
   width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
   background: #f5f7fb;
+}
+@media only screen and (max-width: 48em) {
+  .login-modal__page__right {
+    padding: 1.4em;
+  }
+}
+@media only screen and (max-width: md) {
+  .login-modal__page__right {
+    padding: 1.4em;
+  }
 }
 .login-modal__page__right .heading-secondary {
   font-size: 3rem;
@@ -468,12 +629,12 @@ html {
 }
 @media only screen and (max-width: 48em) {
   .login-modal__page__right .heading-secondary {
-    margin: 2rem 0 1rem 0;
+    margin: 3rem 0 1rem 0;
   }
 }
 @media only screen and (max-width: md) {
   .login-modal__page__right .heading-secondary {
-    margin: 2rem 0 1rem 0;
+    margin: 3rem 0 1rem 0;
   }
 }
 .login-modal__page__right .heading-secondary + p {
@@ -481,28 +642,64 @@ html {
   color: gray;
   font-family: "Josefin sans";
 }
+@media only screen and (max-width: 48em) {
+  .login-modal__page__right .heading-secondary + p {
+    margin-bottom: 2rem;
+  }
+}
+@media only screen and (max-width: md) {
+  .login-modal__page__right .heading-secondary + p {
+    margin-bottom: 2rem;
+  }
+}
 .login-modal__page__right p {
   font-size: 1.55rem;
 }
+.login-modal__page__right nav {
+  font-size: 1.7em;
+}
+.login-modal__page__right nav .nav-link {
+  padding: 0.6em 1.5em 0.5em;
+}
+.login-modal__page__right nav svg {
+  vertical-align: sub;
+}
 .login-modal__page__right .form-wrapper {
   width: 100%;
-  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .login-modal__page__right form {
   width: 100%;
 }
-.login-modal__page__right form input {
-  padding: 1.5rem 1.8rem;
-  border: none;
-  outline: none;
-  margin-bottom: 2rem;
-  border-radius: 1.3rem;
-  width: 100%;
-  font-size: 1.5rem;
-  box-shadow: 8rem 7rem 35rem 0px rgba(213, 153, 255, 0.6705882353);
+.login-modal__page__right form.login-form, .login-modal__page__right form.otp-form {
+  max-width: 36rem;
 }
-.login-modal__page__right form input:focus {
-  outline: 1px solid #00BCD4;
+.login-modal__page__right form.reg-form {
+  text-align: left;
+  font-size: 1.45em;
+}
+.login-modal__page__right form.reg-form .gy-4 {
+  --bs-gutter-y: 1.9rem;
+}
+.login-modal__page__right form.reg-form .card-title {
+  font-size: 1.5em;
+  margin: 0.8em 0 1.1em;
+}
+.login-modal__page__right form.reg-form .form-control {
+  padding: 0.375em 0.75em;
+  padding: 0.575em 0.75em 0.175em;
+  font-size: 1em;
+  border: 1px solid #cbd3db;
+}
+.login-modal__page__right form.reg-form .btn-1 {
+  font-size: 1.2em;
+  width: fit-content;
+  padding: 0.5em 4.2em;
+  border-radius: 5px;
+  margin: 1em auto 0;
+  display: block;
 }
 .login-modal__page__right form p {
   text-align: right;
@@ -551,8 +748,17 @@ html {
 }
 
 .home {
-  padding: 2em;
-  height: 88vh;
+  padding: 1.4em;
+}
+@media only screen and (max-width: 48em) {
+  .home {
+    padding: 0.3em;
+  }
+}
+@media only screen and (max-width: md) {
+  .home {
+    padding: 0.3em;
+  }
 }
 .home .content-box {
   display: flex;
@@ -560,13 +766,11 @@ html {
 @media only screen and (max-width: 48em) {
   .home .content-box {
     flex-direction: column;
-    gap: 1em;
   }
 }
 @media only screen and (max-width: md) {
   .home .content-box {
     flex-direction: column;
-    gap: 1em;
   }
 }
 .home .pane-block {
@@ -575,7 +779,7 @@ html {
 .home .pane-left {
   border: 1px solid rgba(128, 128, 128, 0.3215686275);
   border-left: none;
-  width: 58%;
+  width: 70%;
 }
 @media only screen and (max-width: 48em) {
   .home .pane-left {
@@ -595,7 +799,7 @@ html {
   border: 1px solid rgba(128, 128, 128, 0.3215686275);
   border-left: none;
   border-right: none;
-  width: 42%;
+  width: 30%;
 }
 @media only screen and (max-width: 48em) {
   .home .pane-right {
@@ -610,16 +814,13 @@ html {
   }
 }
 .home .pane-right .basic_table {
-  font-size: 1.8em;
+  font-size: 1.5em;
 }
 .home .pane-right .basic_table th {
   white-space: nowrap;
 }
 .home .pane-right .basic_table td {
   white-space: wrap;
-}
-.home .heading-primary {
-  margin-top: 0.2em;
 }
 .home .card-wrapper {
   border-radius: 1em;
@@ -630,25 +831,28 @@ html {
   width: 100%;
 }
 .home .card-wrapper .home-card {
-  background: hsl(260.31, 78.33%, 57.08%);
-  padding: 4em;
-  border-radius: 1em;
+  background: #f2f9ff;
+  background: var(--bg);
+  padding: 1.7em;
+  border-radius: 0.5em;
   color: white;
   white-space: nowrap;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   font-family: "JOSEFIN SANS";
-  cursor: pointer;
   position: relative;
   overflow: hidden;
+  min-width: 48%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 @media only screen and (max-width: 48em) {
   .home .card-wrapper .home-card {
     width: 100%;
+    padding: 1.5em;
   }
 }
 @media only screen and (max-width: md) {
   .home .card-wrapper .home-card {
     width: 100%;
+    padding: 1.5em;
   }
 }
 .home .card-wrapper .home-card::before {
@@ -665,23 +869,87 @@ html {
 .home .card-wrapper .home-card:hover::before {
   transform: translateX(100%);
 }
+.home .card-wrapper .home-card > a {
+  color: white;
+  text-decoration: none;
+}
 .home .card-wrapper .home-card h1 {
   font-size: 2.9em;
+  margin-bottom: 0;
+  position: relative;
 }
-.home .card-wrapper .home-card.fees {
-  background: #FF5722;
+.home .card-wrapper .home-card h1 .toggler {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.home .card-wrapper .home-card.other-services {
+  min-width: 98%;
+}
+.home .card-wrapper .home-card.other-services .custom-dropdown {
+  background: white;
+  border: 1px solid #e5e5e5;
+  margin: 1em -1.7em -0.7em;
+}
+.home .card-wrapper .home-card.other-services .custom-dropdown table {
+  font-size: 1.4em;
+  margin-bottom: 0;
+  cursor: auto;
+  min-width: 55rem;
+}
+.home .card-wrapper .home-card.other-services .custom-dropdown table td, .home .card-wrapper .home-card.other-services .custom-dropdown table th {
+  padding: 0.5em;
+  color: black;
+  border: 1px solid #e1e1e1;
+}
+.home .card-wrapper .home-card.other-services .custom-dropdown table .form-control {
+  border: 1px solid #cfcfcf;
+}
+.home .card-wrapper .home-card.other-services .custom-dropdown table .bx-x-circle {
+  font-size: 1.4em;
+  color: orangered;
+  vertical-align: sub;
+}
+.home .card-wrapper .home-card.other-services .custom-dropdown table .input-group-text {
+  font-size: 1em;
+}
+.home .card-wrapper .home-card.other-services .custom-dropdown .search-results {
+  border-radius: 0;
+  font-family: "JOSEFIN SANS";
+  font-size: 0.7em;
 }
 
-.payment-details {
+.payment-history {
   padding: 2em;
   height: 100vh;
 }
+@media only screen and (max-width: 48em) {
+  .payment-history {
+    padding: 1.3em;
+  }
+}
+@media only screen and (max-width: md) {
+  .payment-history {
+    padding: 1.3em;
+  }
+}
 
-.online_payment {
+.manage_services {
   padding: 2em;
   height: 100vh;
 }
-.online_payment table.basic_table {
+@media only screen and (max-width: 36em) {
+  .manage_services {
+    padding: 1.3em;
+  }
+}
+@media only screen and (max-width: sm) {
+  .manage_services {
+    padding: 1.3em;
+  }
+}
+.manage_services table.basic_table {
   font-size: 1.5em;
 }
 
@@ -876,12 +1144,51 @@ header nav {
   padding: 0 1em;
 }
 
+.user-dropdown {
+  font-family: "Nunito";
+}
+.user-dropdown #dropdownLink {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  text-decoration: none;
+  line-height: 1.3em;
+  font-family: "Nunito";
+  font-size: 1em;
+}
+@media only screen and (max-width: 36em) {
+  .user-dropdown #dropdownLink {
+    font-size: 0.9em;
+  }
+}
+@media only screen and (max-width: sm) {
+  .user-dropdown #dropdownLink {
+    font-size: 0.9em;
+  }
+}
 .user-dropdown .dropdown-menu {
   line-height: normal;
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 .user-dropdown .dropdown-menu .dropdown-item {
-  padding: 0.5em 1.1em;
+  padding: 0.5em 1.5em 0.5em;
+  color: var(--bs-blue);
+}
+
+.compName {
+  font-size: 1.2em;
+  margin-bottom: 0;
+  color: #0770a5;
+}
+@media only screen and (max-width: 48em) {
+  .compName {
+    font-size: 0.9em;
+  }
+}
+@media only screen and (max-width: md) {
+  .compName {
+    font-size: 0.9em;
+  }
 }
 
 /* ----------------------------Header ends----------------------------------------------- */

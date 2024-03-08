@@ -1,13 +1,14 @@
 @import "abstracts/variables";
 @import "abstracts/mixins";
+@import "abstracts/animations";
 @import "components/components";
 @import "components/table";
 @import "components//typegraphy";
 @import "abstracts/base";
 @import "pages/login";
 @import "pages/home";
-@import "pages/paymentDetails";
-@import "pages/onlinePayment";
+@import "pages/paymentHistory";
+@import "pages/manageServices";
 @import "pages/paymentEntry";
 @import "header";
 @import "sidebar";

@@ -1,6 +1,10 @@
-.online_payment {
+.manage_services {
     padding: 2em;
     height: 100vh;
+
+    @include respond(sm) {
+        padding: 1.3em;
+    }
 
     & table.basic_table {
         font-size: 1.5em;

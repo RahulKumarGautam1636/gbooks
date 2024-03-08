@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { sideBarToggled } from "../slices";
+import { logOut } from "./utils/utilities";
 
 
 const Header = ({ setOffset }) => {
@@ -9,6 +10,9 @@ const Header = ({ setOffset }) => {
     const sidebarRef = useRef(null);
     const dispatch = useDispatch();
     const isSidebarActive = useSelector(state => state.isSidebarOpen);
+    const isLoggedIn = useSelector(state => state.isLoggedIn);
+    const user = useSelector(state => state.user);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setOffset(pre => ({...pre, top: sidebarRef.current.clientHeight}));
@@ -20,6 +24,7 @@ const Header = ({ setOffset }) => {
                 <ul className="header-nav">
                     <li>
                         <div className="toggler-box d-flex align-items-center">
+                            <span onClick={() => dispatch(sideBarToggled(!isSidebarActive))} id="menu-toggler"><i className='bx bx-menu'></i></span>
                             <svg style={{fontSize: '0.8em'}} className="brand-logo logo" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="74.38" cy="74.2227" r="73.4891" fill="var(--clr-primary)"/>
                                 <circle cx="73.5556" cy="74.6983" r="49.105" fill="hsla(var(--hue), var(--sat), 36%)"/>
@@ -27,17 +32,7 @@ const Header = ({ setOffset }) => {
                                 <circle cx="112.918" cy="35.1902" r="10" fill="#FFB100"/>
                                 <circle cx="73.5556" cy="78.5115" r="10" fill="#FFB100"/>
                             </svg>
-                            <span onClick={() => dispatch(sideBarToggled(!isSidebarActive))} id="menu-toggler"><i className='bx bx-menu'></i></span>
-                        </div>
-                    </li>
-                    <li className="d-none d-md-block">
-                        <div className="dropdown">
-                            <Link className="btn btn-secondary btn-sm dropdown-toggle bg-transparent border-0" to="#" id="dropdownLink" data-bs-toggle="dropdown" aria-expanded="false">Mega menu</Link>
-                            <div className="dropdown-menu" aria-labelledby="dropdownLink">
-                                <Link to="#" className="dropdown-item">First item</Link>
-                                <Link to="#" className="dropdown-item">Second item</Link>
-                                <Link to="#" className="dropdown-item">Third item</Link>
-                            </div>
+                            <h3 className="compName">State Medical Faculty of West Bengal</h3>
                         </div>
                     </li>
                     <li className="d-none d-md-block">
@@ -46,7 +41,7 @@ const Header = ({ setOffset }) => {
                             <button className="input-group-text border-0"><i className='bx bx-search'></i></button>
                         </div>
                     </li>
-                    <li className="ms-auto">
+                    {/* <li className="ms-auto">
                         <Link className="h-pill" to="#"><i className='bx bx-cross'></i></Link>
                     </li>
                     <li>
@@ -58,17 +53,21 @@ const Header = ({ setOffset }) => {
                                 <span id="cart-badge" className="position-absolute top-0 start-100 translate-middle badge rounded-pill" style={{fontSize: '0.55em', fontFamily: 'Nunito', background: '#e44dff', display: 'block'}}>2</span>
                             </i>
                         </Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {isLoggedIn && <li className="ms-auto">
                         <div className="dropdown user-dropdown">
-                            <Link to="#" id="dropdownLink" data-bs-toggle="dropdown" aria-expanded="false"><img src="assets/img/user.jpg" alt="user"/></Link>
+                            <Link to="#" id="dropdownLink" data-bs-toggle="dropdown" aria-expanded="false"><img src="assets/img/user.png" alt="user"/>
+                                <span className="d-none d-md-block text-dark">{user.UserFullName}</span>
+                                <i className="bx bxs-down-arrow toggler"></i>
+                            </Link>
                             <div className="dropdown-menu" aria-labelledby="dropdownLink">
-                                <Link to="#" className="dropdown-item">First item</Link>
-                                <Link to="#" className="dropdown-item">Second item</Link>
-                                <Link to="#" className="dropdown-item">Third item</Link>
+                                <Link to="#" className="dropdown-item d-block d-md-none">{user.UserFullName}</Link>
+                                <Link to="/dashboard" className="dropdown-item">Dashboard</Link>
+                                <Link to="#" className="dropdown-item" onClick={() => logOut(navigate)}>Logout</Link>
+                                {/* <Link to="#" className="dropdown-item">Third item</Link> */}
                             </div>
                         </div>
-                    </li>
+                    </li>}
                 </ul>
             </nav>
         </header>

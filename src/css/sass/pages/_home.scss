@@ -1,14 +1,17 @@
 .home {
     
-    padding: 2em;
-    height: 88vh;
+    padding: 1.4em;
+    // height: 88vh;
+    
+    @include respond(md) {
+        padding: 0.3em;
+    }
 
     & .content-box {
         display: flex;
 
         @include respond(md) {
             flex-direction: column;
-            gap: 1em;
         }
     }
 
@@ -19,7 +22,7 @@
     & .pane-left {
         border: 1px solid #80808052;
         border-left: none;
-        width: 58%;
+        width: 70%;
 
         @include respond(md) {
             border: none;
@@ -32,7 +35,7 @@
         border: 1px solid #80808052;
         border-left: none;
         border-right: none;
-        width: 42%;
+        width: 30%;
 
         @include respond(md) {
             border: none;
@@ -41,7 +44,7 @@
 
         & .basic_table {
 
-            font-size: 1.8em;
+            font-size: 1.5em;
 
             & th {
                 white-space: nowrap;
@@ -55,11 +58,6 @@
 
     }
 
-
-    & .heading-primary {
-        margin-top: 0.2em;
-    }
-
     & .card-wrapper {
         border-radius: 1em;
         color: white;
@@ -69,19 +67,21 @@
         width: 100%;
 
         & .home-card {
-            background: hsl(260.31deg 78.33% 57.08%);
-            padding: 4em;
-            border-radius: 1em;
+            background: #f2f9ff;
+            background: var(--bg);
+            padding: 1.7em;
+            border-radius: 0.5em;
             color: white;
             white-space: nowrap;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-            font-family: 'JOSEFIN SANS'; 
-            cursor: pointer;
+            font-family: "JOSEFIN SANS";
             position: relative;
             overflow: hidden;
+            min-width: 48%;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
             @include respond(md) {
                 width: 100%;
+                padding: 1.5em;
             }
 
             &::before {
@@ -100,13 +100,67 @@
                 transform: translateX(100%);
             }
 
+            & > a {
+                color: white;
+                text-decoration: none;
+            }
+
             & h1 {
                 font-size: 2.9em;
+                margin-bottom: 0;
+                position: relative;
+                // color: #393939;
+
+                & .toggler {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                }
             }
-            
-            &.fees {
-                background: #FF5722;
+            &.other-services {
+                min-width: 98%;
+
+                & .custom-dropdown {
+                    background: white;
+                    border: 1px solid #e5e5e5;
+                    margin: 1em -1.7em -0.7em;
+
+                    & table {
+                        font-size: 1.4em;
+                        margin-bottom: 0;
+                        cursor: auto;
+                        min-width: 55rem;
+
+                        & td, & th {
+                            padding: 0.5em;
+                            color: black;
+                            border: 1px solid #e1e1e1;
+                        }
+
+                        & .form-control {
+                            border: 1px solid #cfcfcf;
+                        }
+
+                        & .bx-x-circle {
+                            font-size: 1.4em;
+                            color: orangered;
+                            vertical-align: sub;
+                        }
+
+                        & .input-group-text {
+                            font-size: 1em;
+                        }
+                    }
+
+                    & .search-results {
+                        border-radius: 0;
+                        font-family: "JOSEFIN SANS";
+                        font-size: 0.7em;
+                    }
+                }
             }
+        
         }
     }
 

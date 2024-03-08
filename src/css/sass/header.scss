@@ -82,12 +82,41 @@ header nav {
     height: 3em;
     padding: 0 1em;
 }
-.user-dropdown .dropdown-menu {
-    line-height: normal;
-    font-size: 0.85em;
+.user-dropdown {
 
-    & .dropdown-item {
-        padding: 0.5em 1.1em;
+    font-family: "Nunito";
+
+    & #dropdownLink {
+        display: flex;
+        align-items: center;
+        gap: 0.6em;
+        text-decoration: none;
+        line-height: 1.3em;
+        font-family: 'Nunito';
+        font-size: 1em;
+
+        @include respond(sm) {
+            font-size: 0.9em;
+        }
+    }
+
+    & .dropdown-menu {
+        line-height: normal;
+        font-size: 0.9em;
+
+        & .dropdown-item {
+            padding: 0.5em 1.5em 0.5em;
+            color: var(--bs-blue);
+        }
+    }
+}
+.compName {
+    font-size: 1.2em;
+    margin-bottom: 0;
+    color: #0770a5;
+
+    @include respond(md) {
+        font-size: 0.9em;
     }
 }
 

@@ -5,6 +5,7 @@ import App from './components/App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './css/react-datepicker.css';
 import './css/style.css';
 
 import { Provider } from 'react-redux';

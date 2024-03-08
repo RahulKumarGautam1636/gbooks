@@ -1,0 +1,8 @@
+.payment-history {
+    padding: 2em;
+    height: 100vh;
+
+    @include respond(md) {
+        padding: 1.3em;
+    }
+}
