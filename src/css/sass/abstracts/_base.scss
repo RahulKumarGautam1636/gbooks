@@ -30,6 +30,32 @@ html {
 
 }
 
+@media print {
+	// html, body {
+	// 	width: 210mm;
+	// 	height: 297mm;
+	// }
+	// .A4page {
+	// 	margin: 0 !important;
+	// 	border: initial !important;
+	// 	border-radius: initial !important;
+	// 	width: initial !important;
+	// 	min-height: initial !important;
+	// 	box-shadow: initial !important;
+	// 	/* page-break-after: always; */
+	// }
+	// .print-btn-box {
+	// 	display: none;
+	// }
+	body > *:not(.print-box) {				/* hide everything except the page content */
+		display: none;
+	}
+	body {
+        -webkit-print-color-adjust: exact;
+        background: white;
+    }
+}
+
 ::-webkit-scrollbar-thumb {
     background: #6161d3;
     border-radius: 5px;

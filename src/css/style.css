@@ -319,7 +319,7 @@ $breakpoint argument choice:
   animation-delay: 0.75s;
 }
 
-.search-results {
+.auto-complete {
   background: white;
   z-index: 1;
   width: 100%;
@@ -329,36 +329,23 @@ $breakpoint argument choice:
   border-bottom-right-radius: 1.5em;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
 }
-
-.search-open-btn .search-results {
-  z-index: -1;
-  display: none;
-  padding-bottom: 1.5em;
-}
-.search-open-btn .search-results .input-box .loaded .search-results {
-  display: block;
-}
-
-.search-results ul {
+.auto-complete ul {
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
 }
-
-.search-results li {
+.auto-complete ul li {
   padding: 0;
   border-top: 1px solid rgba(128, 128, 128, 0.1882352941);
   font-size: 0.83em;
   display: block;
   font-weight: 500;
 }
-
-.search-results li:hover, .search-results li:hover a, .search-results li.active, .search-results li.active a {
+.auto-complete ul li:hover, .auto-complete ul li:hover a, .auto-complete ul li.active, .auto-complete ul li.active a {
   background: #00bcd4;
   color: white;
 }
-
-.search-results ul li a {
+.auto-complete ul li a {
   padding: 0.7em 1.5em 0.4em;
   display: block;
   font-size: 1.65em;
@@ -366,9 +353,37 @@ $breakpoint argument choice:
   line-height: 1.5em;
 }
 
-.search-results li:hover, .search-results li:hover a, .search-results li.active, .search-results li.active a {
-  background: #00bcd4;
-  color: white;
+.print-box {
+  position: fixed;
+  inset: 0;
+  z-index: 111111;
+  background: white;
+  overflow: auto;
+}
+@media print {
+  .print-box {
+    position: relative;
+  }
+}
+.print-box .print-btn-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 2em 2em 0em 2em;
+}
+@media print {
+  .print-box .print-btn-box {
+    display: none;
+  }
+}
+.print-box .print-btn-box .print-btn {
+  font-size: 1.4em;
+  display: block;
+}
+
+.del-icon {
+  font-size: 1.4em;
+  color: orangered;
+  vertical-align: sub;
 }
 
 table {
@@ -411,6 +426,7 @@ table.basic_table.list-table td, table.basic_table.list-table th {
 }
 table table {
   font-size: 0.93em !important;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px !important;
 }
 table table th {
   background-color: #e9efff !important;
@@ -502,6 +518,15 @@ html {
   }
 }
 
+@media print {
+  body > *:not(.print-box) { /* hide everything except the page content */
+    display: none;
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    background: white;
+  }
+}
 ::-webkit-scrollbar-thumb {
   background: #6161d3;
   border-radius: 5px;
@@ -889,7 +914,6 @@ html {
 }
 .home .card-wrapper .home-card.other-services .custom-dropdown {
   background: white;
-  border: 1px solid #e5e5e5;
   margin: 1em -1.7em -0.7em;
 }
 .home .card-wrapper .home-card.other-services .custom-dropdown table {
@@ -906,15 +930,10 @@ html {
 .home .card-wrapper .home-card.other-services .custom-dropdown table .form-control {
   border: 1px solid #cfcfcf;
 }
-.home .card-wrapper .home-card.other-services .custom-dropdown table .bx-x-circle {
-  font-size: 1.4em;
-  color: orangered;
-  vertical-align: sub;
-}
 .home .card-wrapper .home-card.other-services .custom-dropdown table .input-group-text {
   font-size: 1em;
 }
-.home .card-wrapper .home-card.other-services .custom-dropdown .search-results {
+.home .card-wrapper .home-card.other-services .custom-dropdown .auto-complete {
   border-radius: 0;
   font-family: "JOSEFIN SANS";
   font-size: 0.7em;
@@ -993,9 +1012,6 @@ html {
   color: black;
   white-space: nowrap;
 }
-.payment_entry table.basic_table.list-table .info td:first-child {
-  width: 20em;
-}
 @media only screen and (max-width: 48em) {
   .payment_entry table.basic_table.list-table .info td:first-child {
     width: auto;
@@ -1019,7 +1035,7 @@ html {
   flex-wrap: wrap;
   gap: 2em;
   row-gap: 0.9em;
-  padding: 0.9em 0;
+  padding: 0.7em 0;
   font-family: "Nunito";
 }
 @media only screen and (max-width: 48em) {
@@ -1048,6 +1064,39 @@ html {
   font-family: "Nunito";
   white-space: normal;
   line-height: 1.7em;
+}
+
+.order-success-modal .modal-dialog {
+  max-width: fit-content;
+}
+
+.orderSuccess {
+  display: grid;
+  place-items: center;
+}
+.orderSuccess .outerDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 4em;
+  border-radius: 1em;
+  max-width: 62rem;
+}
+.orderSuccess p {
+  font-size: 1.8em;
+  text-align: center;
+  color: gray;
+  margin-bottom: 2em;
+  padding: 0 1.2em;
+  font-family: "Nunito";
+}
+.orderSuccess .btn-1 {
+  text-decoration: none;
+  font-size: 1.7em;
+  white-space: nowrap;
+  font-family: "Nunito";
 }
 
 /* ----------------------------Header starts----------------------------------------------- */

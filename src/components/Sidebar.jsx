@@ -36,9 +36,6 @@ const Sidebar = ({ setOffset, offset }) => {
                 <li>
                     <Link onClick={handleClick} to='/paymentHistory'><i className='bx bx-notepad'></i> <span> Payment History</span></Link>
                 </li>
-                <li>
-                    <Link onClick={handleClick} to='/paymentEntry'><i className='bx bxs-edit'></i> <span> Payment Entry</span></Link>
-                </li>
                 </>}
             </ul>
         </section>

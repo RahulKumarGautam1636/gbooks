@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { isMobileToggled } from "../../slices";
 import axios from "axios";
 import CryptoJS from 'crypto-js';
-// import {useSelector} from "react-redux";
-// import {Navigate, useLocation} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { createPortal } from 'react-dom';
+import Modal from 'react-bootstrap/Modal';
 
 export const handleNumberInputs = (e, setStateName) => {
     const {name, value} = e.target;
@@ -112,3 +113,55 @@ export async function getUrl(url) {
   }
 }
 
+export const PrintBox = ({ children, setPrint }) => {
+  return createPortal(
+    <div className="print-box">
+      <div className="print-btn-box">
+          <button className="btn-1 print-btn" onClick={() => setPrint(false)}>Back</button>
+          <button className="btn-1 print-btn" onClick={() => window.print()}>Print</button>
+      </div>
+      {children}
+    </div>
+    , document.body
+  );
+}
+
+export const wait = async (time) => await new Promise((resolve) => setTimeout(resolve, time));
+
+export const ORDER_BILL = 'fY8HsZhNadnvQMnfvDxMrw==';
+export const SCHEDULE_BILL = '';
+
+export const CustomModal = ({ isActive=false, handleClose, name, customClass, fullscreen, children }) => {
+  const handleHide = () => {
+    if (name === 'local-modal') {
+      handleClose(false);                         // for local state controlled modals.
+    } else if (name === 'local-modal-code') {
+      handleClose();                              // for local state controlled modals with addional line of code to run with modal hide.
+    } else {
+      handleClose(name, false);                   // for redux state controlled modals.
+    }
+  }
+  return (
+    <Modal show={isActive} fullscreen={fullscreen} className={customClass} onHide={handleHide} centered>
+        <Modal.Body>
+          {children}
+        </Modal.Body>
+    </Modal>
+  )
+}
+
+export const OrderSuccess = () => {
+  return (
+    <section className="orderSuccess">
+      <div className="outerDiv">
+        <img className="img-fluid" src="../../assets/img/success.png" alt="" />
+        <h3 className="heading-secondary mt-4" style={{fontSize: '3em', marginBottom: '0.4em', fontFamily: "Josefin sans"}}>Payment Successfull !</h3>
+        <p>Successfully paid the amount.</p>
+        <div className="d-flex justify-content-between flex-column flex-lg-row gap-4 align-items-center">
+          <Link to='/manageServices' className="btn-1">MANAGE SERVICES</Link>
+          <Link to='/paymentHistory' className="btn-1">PAYMENT HISTORY</Link>
+        </div>
+      </div>
+    </section>
+  )
+}

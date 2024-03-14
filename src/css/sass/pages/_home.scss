@@ -123,7 +123,7 @@
 
                 & .custom-dropdown {
                     background: white;
-                    border: 1px solid #e5e5e5;
+                    // border: 1px solid #e5e5e5;
                     margin: 1em -1.7em -0.7em;
 
                     & table {
@@ -142,18 +142,12 @@
                             border: 1px solid #cfcfcf;
                         }
 
-                        & .bx-x-circle {
-                            font-size: 1.4em;
-                            color: orangered;
-                            vertical-align: sub;
-                        }
-
                         & .input-group-text {
                             font-size: 1em;
                         }
                     }
 
-                    & .search-results {
+                    & .auto-complete {
                         border-radius: 0;
                         font-family: "JOSEFIN SANS";
                         font-size: 0.7em;

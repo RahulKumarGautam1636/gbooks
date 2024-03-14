@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUrl } from "./utils/utilities";
+import { PrintBox, getUrl } from "./utils/utilities";
 import { loaderToggled } from "../slices";
+import PaymentEntry from "./paymentEntry";
 
 const PaymentHistory = () => {
 
     const [data, setData] = useState({PGPaymentList: []});
     const compCode = useSelector(state => state.compCode);
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
+    const [print, setPrint] = useState(false);
 
     useEffect(() => {
+        if (!user.PartyCode) return;
         const getData = async () => {
             dispatch(loaderToggled(true));
-            let res = await getUrl(`/api/PGPayment?PartyCode=682977&CID=${compCode}`);
+            let res = await getUrl(`/api/PGPayment?PartyCode=${user.PartyCode}&CID=${compCode}`);
             dispatch(loaderToggled(false));
             if (!res) return;
             setData(res);
         }
         getData();
-    }, [compCode, dispatch])
+    }, [compCode, dispatch, user])
 
     return (
         <section className="payment-history">
@@ -26,7 +30,6 @@ const PaymentHistory = () => {
                 <div className="col-12">
                     <h2 className="heading-primary"><i className="bx bxs-notepad icon-badge" style={{'--icon-bg': '#43f1ff', '--icon-border': '#00a1ed', fontSize: '0.9em', padding: '0.25em', color: '#5548ff'}}></i> Fees Payment Details</h2>
                     <div className="table-wrapper overflow-auto">
-
                         <table className="table basic_table list-table parent-table">
                             <thead>
                                 <tr>
@@ -48,18 +51,9 @@ const PaymentHistory = () => {
                                         <td>{i.BankDesc}</td>
                                         <td>{i.BankInstrumentNo}</td>
                                         <td className="text-end">{parseFloat(i.Amount).toFixed(2)}</td>
-                                        <td><i className='bx bx-file'></i> Print</td>
+                                        <td onClick={() => {setPrint(!print)}} role="button"><i className='bx bx-file'></i> Print</td>
                                     </tr>
                                 ))}
-                                {/* <tr>
-                                    <td>1</td>
-                                    <td>Ayushman Sikder</td>
-                                    <td>23ECE070/23ECE070</td>
-                                    <td>Electronics & Communication Engineering</td>
-                                    <td>394,700.00</td>
-                                    <td>12,000.00</td>
-                                    <td><i className='bx bx-file'></i> Print</td>
-                                </tr> */}
                             </tbody>
                         </table>
 
@@ -152,6 +146,9 @@ const PaymentHistory = () => {
                     </div>
                 </div>
             </div>
+            {print && <PrintBox setPrint={setPrint}>
+                <PaymentEntry />
+            </PrintBox>}
         </section>
     )
 }

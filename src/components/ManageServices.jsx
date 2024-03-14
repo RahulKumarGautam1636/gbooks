@@ -1,24 +1,52 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUrl } from "./utils/utilities";
+import { ORDER_BILL, getUrl } from "./utils/utilities";
 import { loaderToggled } from "../slices";
+import { Link } from "react-router-dom";
 
 const ManageServices = () => {
 
     const [data, setData] = useState({DirectSalesCollection: []});
     const compCode = useSelector(state => state.compCode);
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
 
     useEffect(() => {
+        if (!user.PartyCode) return;
         const getData = async () => {
             dispatch(loaderToggled(true));
-            let res = await getUrl(`/api/PGPayment?page=1&PageSize=20&PartyCode=682977%20&CID=${compCode}&LOCID=1106`);
+            let res = await getUrl(`/api/PGPayment?page=1&PageSize=20&PartyCode=${user.PartyCode}%20&CID=${compCode}&LOCID=${user.LocationId}`);
             dispatch(loaderToggled(false));
             if (!res) return;
             setData(res);
         }
         getData();
-    }, [compCode, dispatch])
+    }, [compCode, dispatch, user])
+
+    const handleDelete = async (billId) => {
+        console.log(billId);
+        if (!user.UserId) return;
+        dispatch(loaderToggled(true));
+        let res = await getUrl(`/api/PGPayment?OrderId=${billId}&CID=${compCode}&UID=${user.UserId}`);
+        dispatch(loaderToggled(false));
+        if (res === 'Y') {
+            alert('Order deleted successfully.');
+            // window.location.reload();
+            getData();
+        }
+    }
+    
+    const handlePay = (id) => {
+        console.log(id);
+    }
+
+    const getData = async () => {
+        dispatch(loaderToggled(true));
+        let res = await getUrl(`/api/PGPayment?page=1&PageSize=20&PartyCode=${user.PartyCode}%20&CID=${compCode}&LOCID=${user.LocationId}`);
+        dispatch(loaderToggled(false));
+        if (!res) return;
+        setData(res);
+    }
 
     return (
         <section className="manage_services">
@@ -34,7 +62,8 @@ const ManageServices = () => {
                                     <th scope="col">Party Name</th>
                                     <th scope="col" className="text-end">Amount</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col" className="text-center">Action</th>
+                                    <th scope="col" className="text-center">Pay</th>
+                                    <th scope="col" className="text-center">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,10 +74,15 @@ const ManageServices = () => {
                                         <td>{i.PartyName}</td>
                                         <td className="text-end">{parseFloat(i.Amount).toFixed(2)}</td>
                                         <td>{i.BillStatus}</td>
-                                        <td className="text-center"><button style={{fontSize: '0.9em'}} className="btn-1">PAY</button></td>
+                                        <td className="text-center">
+                                            {/* <button style={{fontSize: '0.9em'}} onClick={() => handlePay(i.BillId)} className="btn-1">PAY</button> */}
+                                            <Link to={`/paymentEntry/${i.BillId}/${ORDER_BILL}`}><i className="bx bx-money del-icon" onClick={() => handlePay(i.BillId)} role="button" title="Pay Now" style={{fontSize: '1.6em', verticalAlign: 'middle', color: '#1ab500'}}></i></Link>
+                                        </td>
+                                        <td className="text-center">
+                                            <i className="bx bx-x-circle del-icon" onClick={() => handleDelete(i.BillId)} role="button" title="Delete"></i>
+                                        </td>
                                     </tr>
-                                ))}
-
+                                ))}                            
                             </tbody>
                         </table>
                     </div>

@@ -1,0 +1,36 @@
+.order-success-modal {
+    & .modal-dialog {
+        max-width: fit-content;
+    }
+}
+
+.orderSuccess {
+
+    display: grid;
+    place-items: center;
+
+    & .outerDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        padding: 4em;
+        border-radius: 1em;
+        max-width: 62rem;
+    }
+    p  {
+        font-size: 1.8em;
+        text-align: center;
+        color: gray;
+        margin-bottom: 2em;
+        padding: 0 1.2em;
+        font-family: "Nunito";
+    }
+    & .btn-1 {
+        text-decoration: none;
+        font-size: 1.7em;
+        white-space: nowrap;
+        font-family: 'Nunito';
+    }
+}

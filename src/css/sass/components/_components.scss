@@ -419,7 +419,7 @@
     }
 }
 
-.search-results {
+.auto-complete {
     // position: absolute;
     // top: 100%;
     // right: 0em;
@@ -431,40 +431,79 @@
     border-bottom-left-radius: 1.5em;
     border-bottom-right-radius: 1.5em;
     box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
-}
-.search-open-btn .search-results {
-    z-index: -1;
-    display: none;
-    padding-bottom: 1.5em;
 
-    .input-box .loaded .search-results {
-        display: block;
+    & ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+
+        & li {
+            padding: 0;
+            border-top: 1px solid #80808030;
+            font-size: 0.83em;
+            display: block;
+            font-weight: 500;
+
+            &:hover, &:hover a, &.active, &.active a {
+                background: #00bcd4;
+                color: white;
+            }
+
+            & a {
+                padding: 0.7em 1.5em 0.4em;
+                display: block;
+                font-size: 1.65em;
+                text-decoration: none;
+                line-height: 1.5em;
+
+            }
+        }
     }
 }
-.search-results ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
+// .search-open-btn .search-results {
+//     z-index: -1;
+//     display: none;
+//     padding-bottom: 1.5em;
+
+//     .input-box .loaded .search-results {
+//         display: block;
+//     }
+// }
+
+
+.print-box {
+    position: fixed;
+    inset: 0;
+    z-index: 111111;
+    background: white;
+    overflow: auto;
+
+    @media print {
+        & {
+            position: relative;
+        }
+    }
+
+    & .print-btn-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 2em 2em 0em 2em;
+
+        @media print {
+            & {
+                display: none;
+            }
+        }
+        
+        & .print-btn {
+            font-size: 1.4em;
+            display: block;
+        }
+    }
 }
-.search-results li {
-    padding: 0;
-    border-top: 1px solid #80808030;
-    font-size: 0.83em;
-    display: block;
-    font-weight: 500;
-}
-.search-results li:hover, .search-results li:hover a, .search-results li.active, .search-results li.active a {
-    background: #00bcd4;
-    color: white;
-}
-.search-results ul li a {
-    padding: 0.7em 1.5em 0.4em;
-    display: block;
-    font-size: 1.65em;
-    text-decoration: none;
-    line-height: 1.5em;
-}
-.search-results li:hover, .search-results li:hover a, .search-results li.active, .search-results li.active a {
-    background: #00bcd4;
-    color: white;
+
+.del-icon {
+    font-size: 1.4em;
+    color: orangered;
+    vertical-align: sub;
 }

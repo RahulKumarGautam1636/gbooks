@@ -31,7 +31,7 @@ const App = () => {
                 <Route path='/dashboard' element={<Dashboard/>}/>
                 <Route path='/paymentHistory' element={<PaymentHistory />}/>
                 <Route path='/manageServices' element={<ManageServices />}/>
-                <Route path='/paymentEntry' element={<PaymentEntry />}/>
+                <Route path='/paymentEntry/:orderId/:billType' element={<PaymentEntry />}/>
             </Routes>
           </main>
           <IsMobile/>
