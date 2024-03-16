@@ -128,20 +128,20 @@ const Dashboard = () => {
                 <div className="pane-block pane-left">
                     <h2 className="heading-primary mt-0 mt-md-2">Payment Information</h2>
                     <div className="card-wrapper">
-                        <div className="home-card" style={{'--bg': '#763ce7'}}>
-                            <Link to='/feesPayment'>
+                        <div className="home-card" style={{'--bg': '#6351bd'}}>
+                            <Link to='/schedulePayment'>
                                 <h1><i className='bx bxs-hourglass icon-badge' style={{'--icon-bg': '#1c0e8f', '--icon-border': '#03A9F4'}}></i> Schedule Fees Payment</h1>
                             </Link>
                         </div>
-                        <div className="home-card" style={{'--bg': '#FF5722'}}>
+                        <div className="home-card" style={{'--bg': '#f15a8b'}}>
                             <Link to='/manageServices'>
                                 <h1><i className="bx bxs-edit icon-badge" style={{'--icon-bg': '#e9af00', '--icon-border': '#fff59b'}}></i> Manage Services</h1>
                             </Link>
                         </div>
-                        <div className="home-card other-services" role="button" style={{'--bg': '#00BCD4'}}>
+                        <div className="home-card other-services" role="button" style={{'--bg': '#16bed9'}}>
                             <h1 onClick={() => setServiceActive(!serviceActive)}><i className="bx bxs-customize icon-badge" style={{'--icon-bg': '#b50092', '--icon-border': '#ff6ee3'}}></i> Other Services<i className='bx bxs-down-arrow toggler' style={{transform: serviceActive && 'translateY(-50%) rotate(180deg)'}}></i></h1>
                             {serviceActive && <div className="custom-dropdown">
-                                <div className="table-wrapper overflow-auto">
+                                <div className="table-wrapper overflow-auto pb-2">
                                     <table className="table basic_table list-table parent-table">
                                         <thead>
                                             <tr>
@@ -177,7 +177,7 @@ const Dashboard = () => {
                                                 </td>
                                                 <td>{selectedFees.SRate}</td>
                                                 <td>{selectedFees.SRate && parseInt(service.qty) * parseFloat(selectedFees.SRate)}</td>
-                                                <td className="text-center" role="button" onClick={() => addServiceRow(selectedFees)}><i className='bx bx-plus-medical'></i></td>
+                                                <td className="text-center" role="button" onClick={() => addServiceRow(selectedFees)}><i className='bx bx-plus-medical' style={{verticalAlign: 'sub'}}></i></td>
                                             </tr>
                                             {!filteredFeesDescription.length ? '' :  <tr>
                                                 <td colSpan={7}>
@@ -190,7 +190,7 @@ const Dashboard = () => {
                                             </tr>}
                                             {serviceRows.map((i, n) => (
                                                 <tr key={i.feesId}>
-                                                    <td className="text-end">{n+1}</td>
+                                                    <td>{n+1}</td>
                                                     <td>{i.course}</td>
                                                     <td>{i.feesDescription}</td>
                                                     <td className="text-end">{i.qty}</td>
@@ -202,7 +202,7 @@ const Dashboard = () => {
                                             {!serviceRows.length ? '' : <tr>
                                                 <td colSpan={7}>
                                                     <div className="form-group form-focus focused ms-auto" style={{width: 'fit-content'}}>
-                                                        <div className="input-group mb-3">
+                                                        <div className="input-group mt-3 mb-2">
                                                             <input type="text" className="form-control text-end" readOnly value={totalAmount} placeholder="Recipient's username" />
                                                             <span className="input-group-text" onClick={placeOrder} role="button" style={{background: '#00bcd4', border: '1px solid #00bcd4'}}><i style={{fontSize: '1.5em'}} className='bx bxs-chevrons-right text-white'></i></span>
                                                         </div>
@@ -214,7 +214,7 @@ const Dashboard = () => {
                                 </div>
                             </div>}
                         </div>
-                        <div className="home-card" style={{'--bg': '#289b5c'}}>
+                        <div className="home-card history" style={{'--bg': '#25b972'}}>
                             <Link to='/paymentHistory'>
                                 <h1><i className="bx bx-notepad icon-badge" style={{'--icon-bg': '#0090ad', '--icon-border': '#7de9ff'}}></i> Payment History</h1>
                             </Link>

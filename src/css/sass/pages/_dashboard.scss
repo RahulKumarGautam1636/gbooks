@@ -118,6 +118,11 @@
                     transform: translateY(-50%);
                 }
             }
+            
+            &.history {
+                min-width: 98%;
+            }
+
             &.other-services {
                 min-width: 98%;
 
@@ -131,6 +136,7 @@
                         margin-bottom: 0;
                         cursor: auto;
                         min-width: 55rem;
+                        box-shadow: none;
 
                         & td, & th {
                             padding: 0.5em;

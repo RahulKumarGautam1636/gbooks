@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import Auth from "./utils/auth";
 import PaymentHistory from "./PaymentHistory";
 import ManageServices from "./ManageServices";
+import SchedulePayment from "./SchedulePayment";
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
                 <Route path='/paymentHistory' element={<PaymentHistory />}/>
                 <Route path='/manageServices' element={<ManageServices />}/>
                 <Route path='/paymentEntry/:orderId/:billType' element={<PaymentEntry />}/>
+                <Route path='/schedulePayment' element={<SchedulePayment />}/>
             </Routes>
           </main>
           <IsMobile/>

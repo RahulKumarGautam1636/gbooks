@@ -15,6 +15,18 @@ const compCodeSlice = createSlice({
 const { compCodeToggled } = compCodeSlice.actions;
 const compCodeReducer = compCodeSlice.reducer;
 
+// Company Info Reducer ---------------------------------------------------------------------------------------------------------
+const compSlice = createSlice({
+  name: 'MODAL', initialState: {},
+  reducers: {
+    compToggled: (state, action) => {  
+      return action.payload;
+    },
+  }
+})
+const { compToggled } = compSlice.actions;
+const compReducer = compSlice.reducer;
+
 // modal Reducer ---------------------------------------------------------------------------------------------------------
 
 const modals = {                                                  // state of all modals.
@@ -122,6 +134,7 @@ export {
   loaderToggled, loaderReducer,
   loginToggled, loginReducer,
   userToggled, userReducer,
-  compCodeToggled, compCodeReducer
+  compCodeToggled, compCodeReducer,
+  compToggled, compReducer
 };   
 

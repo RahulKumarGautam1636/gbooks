@@ -292,7 +292,7 @@ $breakpoint argument choice:
   justify-content: center;
   align-items: center;
   background: rgba(123, 123, 123, 0.4392156863);
-  z-index: 11111;
+  z-index: 111119;
 }
 .preloader span {
   display: block;
@@ -357,12 +357,13 @@ $breakpoint argument choice:
   position: fixed;
   inset: 0;
   z-index: 111111;
-  background: white;
+  background: #dddddd;
   overflow: auto;
 }
 @media print {
   .print-box {
     position: relative;
+    background: white;
   }
 }
 .print-box .print-btn-box {
@@ -423,6 +424,13 @@ table.basic_table.list-table {
 table.basic_table.list-table td, table.basic_table.list-table th {
   padding: 0.5em 1em;
   line-height: 2.1em;
+}
+table.basic_table .text-row p {
+  color: #424242;
+  text-align: justify;
+  font-family: "Nunito";
+  white-space: normal;
+  line-height: 1.7em;
 }
 table table {
   font-size: 0.93em !important;
@@ -909,6 +917,9 @@ html {
   right: 0;
   transform: translateY(-50%);
 }
+.home .card-wrapper .home-card.history {
+  min-width: 98%;
+}
 .home .card-wrapper .home-card.other-services {
   min-width: 98%;
 }
@@ -921,6 +932,7 @@ html {
   margin-bottom: 0;
   cursor: auto;
   min-width: 55rem;
+  box-shadow: none;
 }
 .home .card-wrapper .home-card.other-services .custom-dropdown table td, .home .card-wrapper .home-card.other-services .custom-dropdown table th {
   padding: 0.5em;
@@ -972,64 +984,85 @@ html {
   font-size: 1.5em;
 }
 
-.payment_entry {
+.payment_entry,
+.schedule_payment {
   padding: 2em;
+  display: grid;
+  place-items: center;
 }
-.payment_entry p {
+.payment_entry > .table-wrapper,
+.schedule_payment > .table-wrapper {
+  max-width: 95rem;
+}
+.payment_entry p,
+.schedule_payment p {
   margin-bottom: 0 !important;
 }
-.payment_entry h5 {
+.payment_entry h5,
+.schedule_payment h5 {
   margin-bottom: 0;
   font-size: 1em;
   line-height: inherit;
 }
-.payment_entry table.basic_table.list-table {
+.payment_entry table.basic_table.list-table,
+.schedule_payment table.basic_table.list-table {
   font-size: 1.4em;
 }
-.payment_entry table.basic_table.list-table td, .payment_entry table.basic_table.list-table th {
+.payment_entry table.basic_table.list-table td, .payment_entry table.basic_table.list-table th,
+.schedule_payment table.basic_table.list-table td,
+.schedule_payment table.basic_table.list-table th {
   padding: 0.6em 1em 0.5em;
   line-height: 1.5em;
   white-space: normal;
 }
-.payment_entry table.basic_table.list-table .table-heading {
+.payment_entry table.basic_table.list-table .table-heading,
+.schedule_payment table.basic_table.list-table .table-heading {
   color: green;
   text-align: center;
   font-size: 1.2em;
 }
 @media only screen and (max-width: 48em) {
-  .payment_entry table.basic_table.list-table .table-heading {
+  .payment_entry table.basic_table.list-table .table-heading,
+  .schedule_payment table.basic_table.list-table .table-heading {
     text-align: left;
   }
 }
 @media only screen and (max-width: md) {
-  .payment_entry table.basic_table.list-table .table-heading {
+  .payment_entry table.basic_table.list-table .table-heading,
+  .schedule_payment table.basic_table.list-table .table-heading {
     text-align: left;
   }
 }
-.payment_entry table.basic_table.list-table > tbody > tr > td:first-child {
+.payment_entry table.basic_table.list-table > tbody > tr > td:first-child,
+.schedule_payment table.basic_table.list-table > tbody > tr > td:first-child {
   font-family: "Josefin sans";
   font-weight: 600;
   color: black;
   white-space: nowrap;
 }
 @media only screen and (max-width: 48em) {
-  .payment_entry table.basic_table.list-table .info td:first-child {
+  .payment_entry table.basic_table.list-table .info td:first-child,
+  .schedule_payment table.basic_table.list-table .info td:first-child {
     width: auto;
   }
 }
 @media only screen and (max-width: md) {
-  .payment_entry table.basic_table.list-table .info td:first-child {
+  .payment_entry table.basic_table.list-table .info td:first-child,
+  .schedule_payment table.basic_table.list-table .info td:first-child {
     width: auto;
   }
 }
-.payment_entry table.basic_table.list-table .fees-row td {
+.payment_entry table.basic_table.list-table .fees-row td,
+.schedule_payment table.basic_table.list-table .fees-row td {
   background: #f8fff0;
   border-bottom: 2px solid rgba(128, 128, 128, 0.6705882353);
 }
-.payment_entry table.basic_table.list-table .fees-row td h5 {
+.payment_entry table.basic_table.list-table .fees-row td h5,
+.schedule_payment table.basic_table.list-table .fees-row td h5 {
   font-weight: 600;
 }
-.payment_entry table.basic_table.list-table .paymentMode {
+.payment_entry table.basic_table.list-table .paymentMode,
+.schedule_payment table.basic_table.list-table .paymentMode {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -1039,31 +1072,28 @@ html {
   font-family: "Nunito";
 }
 @media only screen and (max-width: 48em) {
-  .payment_entry table.basic_table.list-table .paymentMode {
+  .payment_entry table.basic_table.list-table .paymentMode,
+  .schedule_payment table.basic_table.list-table .paymentMode {
     flex-direction: column;
     align-items: flex-start;
   }
 }
 @media only screen and (max-width: md) {
-  .payment_entry table.basic_table.list-table .paymentMode {
+  .payment_entry table.basic_table.list-table .paymentMode,
+  .schedule_payment table.basic_table.list-table .paymentMode {
     flex-direction: column;
     align-items: flex-start;
   }
 }
-.payment_entry table.basic_table.list-table .paymentMode p {
+.payment_entry table.basic_table.list-table .paymentMode p,
+.schedule_payment table.basic_table.list-table .paymentMode p {
   font-weight: 600;
 }
-.payment_entry table.basic_table.list-table select {
+.payment_entry table.basic_table.list-table select,
+.schedule_payment table.basic_table.list-table select {
   width: fit-content;
   padding: 0.3em 0.4em;
   border: 1px solid rgb(187, 186, 186);
-}
-.payment_entry table.basic_table.list-table .declaration p {
-  color: #424242;
-  text-align: justify;
-  font-family: "Nunito";
-  white-space: normal;
-  line-height: 1.7em;
 }
 
 .order-success-modal .modal-dialog {

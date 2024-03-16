@@ -1,6 +1,13 @@
-.payment_entry {
+.payment_entry,
+.schedule_payment {
 
     padding: 2em;
+    display: grid;
+    place-items: center;
+
+    & > .table-wrapper {
+        max-width: 95rem;
+    }
 
     & p {
         margin-bottom: 0 !important;
@@ -80,15 +87,17 @@
             padding: 0.3em 0.4em;
             border: 1px solid rgb(187, 186, 186);
         }
-
-        .declaration p {
-            color: #424242;
-            text-align: justify;
-            font-family: 'Nunito';
-            white-space: normal;
-            line-height: 1.7em;
-        }
     }
-
-
 }
+
+// .schedule_payment {
+
+//     & > .table-wrapper {
+//         max-width: none;
+//         overflow: auto;
+        
+//         & > table.print-table {
+//             min-width: 95rem;
+//         }
+//     }
+// }

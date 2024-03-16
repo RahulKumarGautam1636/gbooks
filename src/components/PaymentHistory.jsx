@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PrintBox, getUrl } from "./utils/utilities";
 import { loaderToggled } from "../slices";
-import PaymentEntry from "./paymentEntry";
+import SchedulePayment from "./SchedulePayment";
 
 const PaymentHistory = () => {
 
@@ -11,6 +11,7 @@ const PaymentHistory = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
     const [print, setPrint] = useState(false);
+    const [target, setTarget] = useState('');
 
     useEffect(() => {
         if (!user.PartyCode) return;
@@ -23,6 +24,11 @@ const PaymentHistory = () => {
         }
         getData();
     }, [compCode, dispatch, user])
+
+    const handlePrint = (id) => {
+        setTarget(id);
+        setPrint(true);
+    }
 
     return (
         <section className="payment-history">
@@ -51,7 +57,7 @@ const PaymentHistory = () => {
                                         <td>{i.BankDesc}</td>
                                         <td>{i.BankInstrumentNo}</td>
                                         <td className="text-end">{parseFloat(i.Amount).toFixed(2)}</td>
-                                        <td onClick={() => {setPrint(!print)}} role="button"><i className='bx bx-file'></i> Print</td>
+                                        <td onClick={() => handlePrint(i.EncSessionId)} role="button"><i className='bx bx-file'></i> Print</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -147,7 +153,7 @@ const PaymentHistory = () => {
                 </div>
             </div>
             {print && <PrintBox setPrint={setPrint}>
-                <PaymentEntry />
+                <SchedulePayment EncSessionId={target} />
             </PrintBox>}
         </section>
     )

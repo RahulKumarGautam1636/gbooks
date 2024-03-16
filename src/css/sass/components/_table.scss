@@ -48,6 +48,14 @@ table {
             }
         }
 
+        & .text-row p {
+            color: #424242;
+            text-align: justify;
+            font-family: 'Nunito';
+            white-space: normal;
+            line-height: 1.7em;
+        }
+
     }
 
     & table {

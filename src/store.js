@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 // import { modalReducer, navReducer } from './reducers';
-import { isMobileReducer, modalReducer, navReducer, sideBarReducer, loaderReducer, loginReducer, userReducer, compCodeReducer } from './slices';
+import { isMobileReducer, modalReducer, navReducer, sideBarReducer, loaderReducer, loginReducer, userReducer, compCodeReducer, compReducer } from './slices';
 
 // Automatically adds the thunk middleware and the Redux DevTools extension
 export const store = configureStore({
@@ -13,6 +13,7 @@ export const store = configureStore({
     isLoading: loaderReducer,
     isLoggedIn: loginReducer,
     user: userReducer,
-    compCode: compCodeReducer
+    compCode: compCodeReducer,
+    company: compReducer
   }
 })

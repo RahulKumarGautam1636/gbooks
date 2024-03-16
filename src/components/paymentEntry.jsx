@@ -15,7 +15,8 @@ const PaymentEntry = () => {
     const user = useSelector(state => state.user);
     const navigate = useNavigate();
     const [successModal, setSuccessModal] = useState(false);
-    const [selectedPGateway, setSelectedPGateway] = useState({ CodeId: '', CodeValue: '', Description: '', KeyId: '', KeySecret: '' });               
+    const [selectedPGateway, setSelectedPGateway] = useState({ CodeId: '', CodeValue: '', Description: '', KeyId: '', KeySecret: '' });
+    const [consent, setConsent] = useState(false);               
 
     useEffect(() => {
         if (!user.PartyCode || !params.orderId || !params.billType) return;
@@ -35,8 +36,12 @@ const PaymentEntry = () => {
         setSelectedPGateway({ CodeId: selected.CodeId, CodeValue: selected.CodeValue, Description: selected.Description, KeyId: selected.KeyId, KeySecret: selected.KeySecret });
     }
 
-    const initPayment = async () => {     
+    const initPayment = async () => { 
+        if (!consent) return alert('Please agree with the declaration.');    
         if (!selectedPGateway.KeyId) return alert('Please choose a Payment Gateway to continue..');
+        if (!data.DirectSales.BillId) return alert('Error, No Bill ID received.');
+        if (!user.PartyCode || !user.UserId) return alert('Invalid User.');
+        if (!compCode) return alert('Invalid Company ID.');
         const paymentData = {
             EncCompanyId: compCode,
             LocationId: user.LocationId,
@@ -60,7 +65,7 @@ const PaymentEntry = () => {
             const options = { 
                 RazorPayAPIKey: status.PGPayments.PGateWayKeyId,
                 RazorPaySecret: status.PGPayments.PGateWayKeySecret,
-                Amount: status.Amount,
+                Amount: status.Amount,                                      
                 Currency: status.Currency,
                 Name: status.Name,
                 RemarksDescription: status.RemarksDescription,
@@ -99,6 +104,7 @@ const PaymentEntry = () => {
     } 
     
     const makePaymentRequest = (i) => {
+        if (!i.Amount || isNaN(i.Amount)) return alert('Invalid amount, cannot proceed to payment.');
         var options = {
             key: i.RazorPayAPIKey,
             amount: i.Amount,
@@ -151,7 +157,7 @@ const PaymentEntry = () => {
                         <tr>
                             <th colSpan={2} className="table-heading">
                                 {/* Application No. <span style={{ color: "red" }}>23ECE070</span>. Please keep it safe for further prorcess. */}
-                                ORDER DETAILS
+                                PAYMENT DETAILS
                             </th>
                         </tr>
                     </thead>
@@ -310,8 +316,8 @@ const PaymentEntry = () => {
                         </tr>
                         <tr>
                             <td colSpan={2}>
-                                <div className="d-flex gap-5 align-items-start declaration">
-                                    <input type="checkbox" style={{marginTop: '0.5em'}}/>
+                                <div className="d-flex gap-5 align-items-start text-row">
+                                    <input type="checkbox" onChange={() => setConsent(!consent)} style={{marginTop: '0.5em'}}/>
                                     <p>
                                         I declare that to the best of my knowledge and belief the
                                         information given above are the correct and complete in all respect.

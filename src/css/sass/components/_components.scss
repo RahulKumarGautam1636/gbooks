@@ -386,7 +386,7 @@
     justify-content: center;
     align-items: center;
     background: #7b7b7b70;
-    z-index: 11111;
+    z-index: 111119;
 
     & span {
         display: block;
@@ -475,12 +475,13 @@
     position: fixed;
     inset: 0;
     z-index: 111111;
-    background: white;
+    background: #dddddd;
     overflow: auto;
 
     @media print {
         & {
             position: relative;
+            background: white;
         }
     }
 
