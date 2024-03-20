@@ -8,68 +8,46 @@ import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 
 const reg = {
-    Salutation: 'Mr',
-    Name: 'Ajeet Bharati',
+    // Salutation: 'Mr',
+    // Name: 'Ajeet Bharati',
+    // EncCompanyId: '',
+    // RegMob1: '7000000000',
+    // UserEmail: 'mail@mail.com',
+    // Gender: '104',
+    // Address: 'address',
+    // UserPassword: '1234',
+    // CnfPassword: '1234',
+    // Address2: 'Address2',
+    // State: '',
+    // City: 'City',
+    // Pin: '123456',    
+    // DOB: new Date().toLocaleDateString('fr-CA'),
+    // Aadhaar: '123456789456',
+    // IsDOBCalculated: 'N',
+    // UserType: 'STUDENT',
+    // LocationId: '',
+    // DeptId: '',
+
+    Salutation: '',
+    Name: '',
     EncCompanyId: '',
-    RegMob1: '7000000000',
-    UserEmail: 'mail@mail.com',
+    RegMob1: '',
+    UserEmail: '',
     Gender: '104',
-    Address: 'address',
-    UserPassword: '1234',
-    CnfPassword: '1234',
-    Address2: 'Address2',
+    Address: '',
+    UserPassword: '',
+    CnfPassword: '',
+    Address2: '',
     State: '',
-    City: 'City',
-    Pin: '123456',    
+    City: '',
+    Pin: '',
     DOB: new Date().toLocaleDateString('fr-CA'),
-    Aadhaar: '123456789456',
+    Aadhaar: '',
     IsDOBCalculated: 'N',
     UserType: 'STUDENT',
     LocationId: '',
     DeptId: '',
-
-    // Salutation: '',
-    // Name: '',
-    // EncCompanyId: '',
-    // RegMob1: '',
-    // UserEmail: '',
-    // Gender: '',
-    // Address: '',
-    // UserPassword: '',
-    // CnfPassword: '',
-    // Address2: '',
-    // State: '',
-    // City: '',
-    // Pin: '',
-    // DOB: new Date().toLocaleDateString('fr-CA'),
-    // Aadhaar: '',
-    // IsDOBCalculated: 'N',
-    // UserType: 'STUDENT',
-    // LocationId: 1106,
-    // DeptId: 22491,
 }
-
-// {
-//     "Salutation": "Mr",
-//     "Name": "Test User",
-//     "EncCompanyId": "jEQD4S0/NFcoL7yL7I4SaA==",
-//     "RegMob1": "7003290023",
-//     "UserEmail": "mail@mail.com",
-//     "Gender": "104",
-//     "Address": "address",
-//     "UserPassword": "1234",
-//     "CnfPassword": "1234",
-//     "Address2": "Address2",
-//     "State": "1452",
-//     "City": "City",
-//     "Pin": "123456",
-//     "DOB": "1983-12-15",
-//     "Aadhaar": "123456789456",
-//     "IsDOBCalculated": "N",
-//     "UserType": "STUDENT",
-//     "LocationId": "1113",
-//     "DeptId": "22499"
-// }
 
 const Home = () => {
 
@@ -86,6 +64,7 @@ const Home = () => {
     const [locationList, setLocationList] = useState([{LocationName: '', LocationId: ''}]);                        // {LocationName: 'AMRI HOSPITALS LIMITED, DHAKURIA, KOLKATA', LocationId: 1106}
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [forgotPasswordError, setForgotPasswordError] = useState({ status: false, message: "We'll send your password !"});
 
     // const state = useSelector(state => state.compCode);
 
@@ -227,6 +206,23 @@ const Home = () => {
     //     setOTP({isOpen: false, recievedOTP: null, enteredOTP: '', sent: false, verified: false, phone: ''});
     // }
 
+    const [recoveryNumber, setRecoveryNumber] = useState('');
+
+    const handleForgotPasswordForm = async (e) => {
+        e.preventDefault();
+        console.log(recoveryNumber);
+        dispatch(loaderToggled(true));
+        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/UserAuth/0?UN=${recoveryNumber}&CID=${compCode}&Type=FP`, {});
+        dispatch(loaderToggled(false));
+        if (res.data === 'Y') {
+          setForgotPasswordError({status: true, message: 'We sent your password to your number.'});
+        } else {
+          setForgotPasswordError({status: true, message: 'This number is not Registered.'});
+        }
+    }
+
+
+
     return (
         <section className="login-modal h-100">
             <div className="container h-100">
@@ -262,14 +258,29 @@ const Home = () => {
                                             <input onChange={handleLoginForm} value={loginData.UserPassword} autoComplete="true" type="password" placeholder="Password" name='UserPassword' required/>
                                         </div>
                                         {error.status && <p style={{textAlign: 'left', color: 'orangered', margin: '0'}}>{error.message}</p>}
-                                        <p><i className="bx bxs-help-circle"></i> Forgot your password ?</p>
+                                        <p role="button" onClick={() => setTabActive('forgotPassword')}><i className="bx bxs-help-circle"></i> Forgot your password ?</p>
                                         <button type="submit" className="btn-1">Login</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div className={`tab-pane fade ${tabActive === 'forgotPassword' && 'show active'}`} role="tabpanel" aria-labelledby="tabFade-1">
+                                <div className="form-wrapper">
+                                    <h1 className="heading-secondary">Forgot your Password !!!</h1>
+                                    <p>Enter Your Phone Number.</p>
+                                    <form className="login-form input-style-1" onSubmit={handleForgotPasswordForm}>
+                                        <div className="input__group">
+                                            <input onChange={(e) => handleNumberInputs(e, setRecoveryNumber, true)} value={recoveryNumber} autoComplete="true" type="text" maxLength={10} placeholder="Phone number" name='recoveryNumber' required/>
+                                        </div>
+                                        {forgotPasswordError.status && <p style={{textAlign: 'left', color: 'orangered', margin: '0'}}>{forgotPasswordError.message}</p>}
+                                        <p><i className='bx bx-info-circle'></i> We'll send your password.</p>
+                                        <button type="submit" className="btn-1">GET PASSWORD</button>
+                                        <p className="text-center" role="button" onClick={() => setTabActive('login')}><i className='bx bx-arrow-back'></i> Back to Login.</p>
                                     </form>
                                 </div>
                             </div>
                             <div className={`tab-pane fade ${tabActive === 'register' && 'show active'}`} role="tabpanel" aria-labelledby="tabFade-2">
                                 <div className="form-wrapper">
-                                    {!otp.verified &&  <><h1 className="heading-secondary">Enter Your Number!</h1>
+                                    {!otp.verified &&  <><h1 className="heading-secondary">Please Register!</h1>
                                     <p>We're glad having you on VIT Educare</p>
                                     <form className="otp-form input-style-1" onSubmit={otpFormSubmit}>
                                         <div className="input__group">

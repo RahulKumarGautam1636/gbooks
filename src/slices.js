@@ -100,7 +100,7 @@ const { loaderToggled } = loaderSlice.actions;
 const loaderReducer = loaderSlice.reducer;
 
 // Login Reducer ---------------------------------------------------------------------------------------------------------
-
+console.log(compCode);
 const loginSlice = createSlice({
   name: 'IS_LOGGED_IN', initialState: false,
   reducers: {

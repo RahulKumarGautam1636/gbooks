@@ -100,7 +100,7 @@
             background: #f5f7fb;
 
             @include respond(md) {
-                padding: 1.4em;
+                padding: 1.4em 1.4em 2.5em;
             }
 
             & .heading-secondary {
@@ -186,7 +186,7 @@
 
                 & p {
                     text-align: right;
-                    margin: 4rem 0 2.5rem 0;
+                    margin: 3rem 0 2.5rem 0;
                     color: #0089f5;
 
                     @include respond(md) {

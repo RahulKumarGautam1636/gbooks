@@ -7,10 +7,11 @@ import { Link } from "react-router-dom";
 import { createPortal } from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 
-export const handleNumberInputs = (e, setStateName) => {
+export const handleNumberInputs = (e, setStateName, isPrimitive=false) => {
     const {name, value} = e.target;
     const re = /^[0-9\b]+$/;
     if (value === '' || re.test(value)) {
+      if (isPrimitive) return setStateName(value);
       setStateName(preValue => {
           return {...preValue, [name]: value};
       });
@@ -129,7 +130,7 @@ export const PrintBox = ({ children, setPrint }) => {
 export const wait = async (time) => await new Promise((resolve) => setTimeout(resolve, time));
 
 export const ORDER_BILL = 'fY8HsZhNadnvQMnfvDxMrw==';
-export const SCHEDULE_BILL = '';
+export const SCHEDULE_BILL = 'Ae1o9l0VVDAIACBHYvpWaA==';
 
 export const CustomModal = ({ isActive=false, handleClose, name, customClass, fullscreen, children }) => {
   const handleHide = () => {

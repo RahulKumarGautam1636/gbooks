@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PrintBox, getUrl } from "./utils/utilities";
 import { loaderToggled } from "../slices";
-import SchedulePayment from "./SchedulePayment";
+import SchedulePayment from "./PaymentReceipt";
 
 const PaymentHistory = () => {
 

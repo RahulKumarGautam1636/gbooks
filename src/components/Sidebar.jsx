@@ -31,7 +31,10 @@ const Sidebar = ({ setOffset, offset }) => {
                     <Link onClick={handleClick} to='/dashboard'><i className='bx bxs-dashboard'></i> <span> Dashboard</span></Link>
                 </li>
                 <li>
-                    <Link onClick={handleClick} to='/manageServices'><i className='bx bx-wifi'></i> <span> Manage Services</span></Link>
+                    <Link onClick={handleClick} to='/schedulePayment'><i className='bx bx-time-five'></i> <span> Schedule Payment</span></Link>
+                </li>
+                <li>
+                    <Link onClick={handleClick} to='/manageServices'><i className='bx bxs-edit'></i> <span> Manage Services</span></Link>
                 </li>
                 <li>
                     <Link onClick={handleClick} to='/paymentHistory'><i className='bx bx-notepad'></i> <span> Payment History</span></Link>
