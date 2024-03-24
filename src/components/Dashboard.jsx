@@ -121,7 +121,7 @@ const Dashboard = () => {
             return false;
         }
     }
-    
+    console.log('test');
     return (
         <section className="home">
             <div className="content-box h-100">

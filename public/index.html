@@ -12,6 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
     <title>Payment App</title>
     <style>
       :root {
@@ -42,5 +47,33 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      function initPicker(id, handlePicker, name) {
+        $(`#${id}`).datepicker({
+          dateFormat: "dd/mm/yy",
+          changeMonth: true,
+          changeYear: true,
+          yearRange: "-60:+0",
+          onSelect: function () {
+            this.focus();
+          },
+          onClose: function(date) {
+            handlePicker(date, name);
+          }           
+        });
+      }
+      function removePicker(id) {
+        $(`#${id}`).datepicker( "destroy" );
+      }
+    </script>
+    <style>
+      .ui-widget {
+        font-size: 1.8em;
+        font-family: 'Josefin Sans';
+      }
+      .ui-datepicker-title {
+        font-family: 'Josefin Sans';
+      }
+    </style>
   </body>
 </html>

@@ -1,6 +1,6 @@
 // import { HashLink } from "react-router-hash-link";
 import { useDispatch, useSelector } from "react-redux";
-import { JQPicker, encrypt, getOtp, getStates, getUrl, handleNumberInputs } from "./utils/utilities";
+import { encrypt, getOtp, getStates, getUrl, handleNumberInputs } from "./utils/utilities";
 import { useEffect, useState } from "react";
 import { loaderToggled, loginToggled, userToggled } from "../slices";
 import axios from 'axios';
@@ -41,7 +41,7 @@ const reg = {
     State: '',
     City: '',
     Pin: '',
-    DOB: '',
+    DOB: new Date().toLocaleDateString('fr-CA'),
     Aadhaar: '',
     IsDOBCalculated: 'N',
     UserType: 'STUDENT',
@@ -333,7 +333,7 @@ const Home = () => {
                                                             <input type="text" name="DOB" onChange={handleRegInputs} className="form-control hasDatepicker" value={regData.DOB}/>
                                                         </div>
                                                     </div> */}
-                                                    {/* <DatePicker 
+                                                    <DatePicker 
                                                         selected={new Date(regData.DOB)}
                                                         onChange={(date) => setRegData(pre => ({ ...pre, DOB: date ? date.toLocaleDateString('fr-CA') : new Date().toLocaleDateString('fr-CA')}))}
                                                         showYearDropdown
@@ -342,8 +342,7 @@ const Home = () => {
                                                         scrollableYearDropdown
                                                         className="form-control"
                                                         dateFormat="dd/MM/yyyy"
-                                                    /> */}
-                                                    <JQPicker id={'datepicker2'} setState={setRegData} name={'DOB'} customClass={'form-control'}/>
+                                                    />
                                                 </div>
                                             </div>
                                             {/* <div className="col-2">

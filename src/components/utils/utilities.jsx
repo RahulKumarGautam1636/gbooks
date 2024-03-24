@@ -166,3 +166,19 @@ export const OrderSuccess = () => {
     </section>
   )
 }
+
+export const JQPicker = ({ id, setState, name, customClass }) => {
+
+  useEffect(() => {
+    window.initPicker(id, handleDate, name);
+    return () => {
+      window.removePicker(id);
+    }
+  },[])
+
+  function handleDate(pickedDate, name) {
+    setState(pre => ({ ...pre, [name]: pickedDate}));
+  }
+
+  return <input type="text" className={customClass} autoComplete="off" id={id} />;
+}
