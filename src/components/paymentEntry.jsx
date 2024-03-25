@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { loaderToggled } from "../slices";
-import { CustomModal, getUrl, OrderSuccess } from "./utils/utilities";
+import { loaderToggled, modalToggled } from "../slices";
+import { CustomModal, getUrl, MyModal, OrderSuccess } from "./utils/utilities";
 import axios from "axios";
 
 
@@ -16,7 +16,8 @@ const PaymentEntry = () => {
     const navigate = useNavigate();
     const [successModal, setSuccessModal] = useState(false);
     const [selectedPGateway, setSelectedPGateway] = useState({ CodeId: '', CodeValue: '', Description: '', KeyId: '', KeySecret: '' });
-    const [consent, setConsent] = useState(false);               
+    const [consent, setConsent] = useState(false);    
+    const modals = useSelector(state => state.modals);           
 
     useEffect(() => {
         if (!user.PartyCode || !params.orderId || !params.billType) return;
@@ -318,7 +319,7 @@ const PaymentEntry = () => {
                             <td colSpan={2}>
                                 <div className="d-flex gap-5 align-items-start text-row">
                                     <input type="checkbox" onChange={() => setConsent(!consent)} style={{marginTop: '0.5em'}}/>
-                                    <p>
+                                    <p onClick={() => dispatch(modalToggled({ name: 'PARTNER_FORM', status: true, data: '' }))}>
                                         I declare that to the best of my knowledge and belief the
                                         information given above are the correct and complete in all respect.
                                         In the event of being found otherwise, I shall abide by the decison
@@ -342,6 +343,7 @@ const PaymentEntry = () => {
             <CustomModal isActive={successModal} name={'local-modal-code'} handleClose={handleRedirect} customClass={'order-success-modal'}>
                 <OrderSuccess />
             </CustomModal>
+            {modals.PARTNER_FORM.status && <MyModal name='PARTNER_FORM' customClass='partner-form' child={<OrderSuccess />}/>}
         </section>
     )
 }

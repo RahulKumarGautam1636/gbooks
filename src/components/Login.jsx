@@ -1,10 +1,10 @@
 // import { HashLink } from "react-router-hash-link";
 import { useDispatch, useSelector } from "react-redux";
-import { JQPicker, encrypt, getOtp, getStates, getUrl, handleNumberInputs } from "./utils/utilities";
+import { JQPicker, MyModal, encrypt, getOtp, getStates, getUrl, handleNumberInputs } from "./utils/utilities";
 import { useEffect, useState } from "react";
 import { loaderToggled, loginToggled, userToggled } from "../slices";
 import axios from 'axios';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 
 const reg = {
@@ -65,6 +65,7 @@ const Home = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [forgotPasswordError, setForgotPasswordError] = useState({ status: false, message: "We'll send your password !"});
+    const [active, setActive] = useState(true);
 
     // const state = useSelector(state => state.compCode);
 
@@ -229,7 +230,7 @@ const Home = () => {
                 <div className="login-modal__page">
                     {/* <i className='bx bx-chevrons-left modal-close-btn' onClick={() => handleClose('LOGIN_MODAL', false)}></i> */}
                     <div className="login-modal__page__left">
-                        <h2 className="heading-secondary align-center">Welcome Back!</h2>
+                        <h2 className="heading-secondary align-center" onClick={() => setActive(true)}>Welcome Back!</h2>
                     </div>
                     <div className="login-modal__page__right">
                         <nav className="w-100">
@@ -489,6 +490,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            {/* {active && <MyModal handleClose={setActive}/>} */}
         </section>
     )
 }

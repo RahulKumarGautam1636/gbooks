@@ -13,9 +13,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
+    <link rel="stylesheet" href="delete/jquery-ui.css">
+    <script src="delete/jquery.min.js"></script>
+    <script src="delete/jquery-ui.js"></script>
 
     <title>Payment App</title>
     <style>
@@ -46,7 +49,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
     <script>
       function initPicker(id, handlePicker, name) {
         $(`#${id}`).datepicker({
@@ -70,6 +73,7 @@
       .ui-widget {
         font-size: 1.8em;
         font-family: 'Josefin Sans';
+        z-index: 1111111 !important;
       }
       .ui-datepicker-title {
         font-family: 'Josefin Sans';

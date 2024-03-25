@@ -25,6 +25,16 @@ $breakpoint argument choice:
     background: #f00e43;
   }
 }
+@keyframes slideDownReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-4em);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
 .logo {
   max-height: 7rem;
 }
@@ -182,10 +192,10 @@ $breakpoint argument choice:
 .modal-close-btn {
   font-size: 3.5rem;
   position: absolute;
-  top: 3rem;
-  right: 3rem;
+  top: 0.4em;
+  right: 0.4em;
   color: #0f8086;
-  padding: 3px 2px 2px 2px;
+  padding: 3px 2px 1px 2px;
   border-radius: 50%;
   background: #f7f7f7;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 3px 0px;
@@ -385,6 +395,32 @@ $breakpoint argument choice:
   font-size: 1.4em;
   color: orangered;
   vertical-align: sub;
+}
+
+.myModal {
+  position: fixed;
+  inset: 0;
+  z-index: 1111;
+  display: grid;
+  place-items: center;
+}
+.myModal .bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3098039216);
+  z-index: 1;
+}
+.myModal-body {
+  position: relative;
+  background: white;
+  padding: 1.5em;
+  width: 100%;
+  max-width: 70em;
+  border-radius: 0.5em;
+  min-height: 20em;
+  z-index: 5;
+  animation: slideDownReveal 0.3s ease-in-out 0.1s;
+  animation-fill-mode: backwards;
 }
 
 table {

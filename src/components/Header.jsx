@@ -33,6 +33,8 @@ const Header = ({ setOffset }) => {
         getData();
     }, [compCode, dispatch, user])  
 
+    console.log('test');
+
     return (
         <header ref={sidebarRef}>
             <nav>

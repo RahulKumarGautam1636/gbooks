@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { isMobileToggled } from "../../slices";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { isMobileToggled, modalToggled } from "../../slices";
 import axios from "axios";
 import CryptoJS from 'crypto-js';
 import { Link } from "react-router-dom";
@@ -170,15 +170,51 @@ export const OrderSuccess = () => {
 export const JQPicker = ({ id, setState, name, customClass }) => {
 
   useEffect(() => {
+
+    function handleDate(pickedDate, name) {
+      setState(pre => ({ ...pre, [name]: pickedDate}));
+    }
+
     window.initPicker(id, handleDate, name);
     return () => {
       window.removePicker(id);
     }
-  },[])
-
-  function handleDate(pickedDate, name) {
-    setState(pre => ({ ...pre, [name]: pickedDate}));
-  }
+  },[id, setState, name])
 
   return <input type="text" className={customClass} autoComplete="off" id={id} />;
+}
+
+export const MyModal = ({ handleClose, name, customClass, fullscreen, child, isStatic }) => {
+
+  const dispatch = useDispatch();
+  const [date, setDate] = useState({date: ''});
+
+  const handleHide = () => {
+    if (name === 'local-modal') {
+      handleClose(false);                         // for local state controlled modals.
+    } else if (name === 'local-modal-code') {
+      handleClose();                              // for local/redux state controlled modals with addional line of code to run with modal hide.
+    } else {
+      console.log(name);
+      dispatch(modalToggled({ name: name, status: false, data: '' }));                   // for redux state controlled modals.
+    }
+  }
+
+  const handleBGClick = () => {
+    if (!isStatic) return handleHide();
+  }
+
+  return (
+    createPortal(
+      <section className={`myModal ${customClass} ${fullscreen}`}>
+        <div className="bg-overlay" onClick={handleBGClick}></div>
+        <div className={`myModal-body`}>
+        <i class='bx bx-x-circle modal-close-btn' onClick={handleHide}></i>
+          <JQPicker id={'datepicker2'} setState={setDate} name={'date'} customClass={'form-control'}/>
+          {child}
+        </div>
+      </section>,
+      document.body
+    )
+  )
 }

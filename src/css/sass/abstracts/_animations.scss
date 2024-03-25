@@ -14,3 +14,14 @@
 		background: #f00e43;
 	}
 }
+
+@keyframes slideDownReveal {
+	0% {
+        opacity: 0;
+        transform: translateY(-4em);
+	}
+	100% {
+        opacity: 1;
+        transform: none;
+	}
+}
